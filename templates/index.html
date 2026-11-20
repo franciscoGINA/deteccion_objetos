@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vision AI - YOLO Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-icon">👁️</div>
+            VISION <span>AI</span>
+        </div>
+
+        <div class="top-info">
+            <span>YOLOv8 | Computer Vision</span>
+
+            <div class="live-indicator">
+                <div class="live-dot"></div>
+                SISTEMA EN VIVO
+            </div>
+        </div>
+
+    </header>
+
+
+    <div class="layout">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar">
+
+            <div class="menu-label">MENÚ PRINCIPAL</div>
+
+            <div class="nav-link active" data-page="dashboard">
+                <span class="nav-icon">▦</span>
+                <span class="nav-text">Dashboard</span>
+            </div>
+
+            <div class="nav-link" data-page="live">
+                <span class="nav-icon">📹</span>
+                <span class="nav-text">Detección en vivo</span>
+            </div>
+
+            <div class="menu-label">ANÁLISIS</div>
+
+            <div class="nav-link" data-page="stats">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Estadísticas</span>
+            </div>
+
+            <div class="nav-link" data-page="history">
+                <span class="nav-icon">🕒</span>
+                <span class="nav-text">Historial</span>
+            </div>
+
+            <div class="menu-label">SISTEMA</div>
+
+            <div class="nav-link" data-page="settings">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Configuración</span>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div style="color:#60a5fa;font-weight:bold;margin-bottom:8px;">
+                    SISTEMA DE IA
+                </div>
+                Modelo: YOLOv8n<br>
+                Plataforma: Flask<br>
+                Visión: OpenCV
+            </div>
+
+        </aside>
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+
+        <main class="main-content">
+
+
+            <!-- =================================
+                 DASHBOARD
+            ================================== -->
+
+            <section class="page active" id="dashboard">
+
+                <div class="page-header">
+                    <h1>Panel de control</h1>
+                    <p>Resumen general del sistema de inteligencia artificial.</p>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">👤</div>
+                        <div class="stat-title">PERSONAS</div>
+                        <div class="stat-number" id="person">0</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🚗</div>
+                        <div class="stat-title">AUTOS</div>
+                        <div class="stat-number" id="car">0</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📱</div>
+                        <div class="stat-title">CELULARES</div>
+                        <div class="stat-number" id="cell phone">0</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-title">OTROS OBJETOS</div>
+                        <div class="stat-number" id="otros">0</div>
+                    </div>
+
+                </div>
+
+                <div class="section-card">
+
+                    <div class="section-title">
+                        📹 Vista previa de detección
+                    </div>
+
+                    <div class="video-box">
+                        <div class="video-heading">
+                            <span>Cámara principal</span>
+                            <span class="live-indicator">
+                                <span class="live-dot"></span>
+                                EN VIVO
+                            </span>
+                        </div>
+
+                        <img src="/video_feed" alt="Video de detección en tiempo real">
+
+                    </div>
+
+                </div>
+
+                <div class="section-card">
+
+                    <div class="section-title">
+                        📈 Resumen de detecciones
+                    </div>
+
+                    <div id="dashboard-summary">
+                        Esperando información del sistema...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 DETECCION EN VIVO
+            ================================== -->
+
+            <section class="page" id="live">
+
+                <div class="page-header">
+                    <h1>Detección en tiempo real</h1>
+                    <p>Monitoreo de objetos mediante inteligencia artificial.</p>
+                </div>
+
+                <div class="live-layout">
+
+                    <div class="section-card">
+
+                        <div class="section-title">
+                            🎥 Cámara principal
+                        </div>
+
+                        <div class="video-box">
+                            <div class="video-heading">
+                                <span>Transmisión de video</span>
+                                <span class="live-indicator">
+                                    <span class="live-dot"></span>
+                                    EN VIVO
+                                </span>
+                            </div>
+
+                            <img src="/video_feed" alt="Detección YOLO">
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel">
+
+                        <h2>📊 Ahora mismo veo:</h2>
+
+                        <div class="card">
+                            <h3>👤 PERSONAS</h3>
+                            <p id="live-person">0</p>
+                        </div>
+
+                        <div class="card">
+                            <h3>🚗 AUTOS</h3>
+                            <p id="live-car">0</p>
+                        </div>
+
+                        <div class="card">
+                            <h3>📱 CELULARES</h3>
+                            <p id="live-cell">0</p>
+                        </div>
+
+                        <div class="card">
+                            <h3>📦 OTROS</h3>
+                            <p id="live-otros">0</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 ESTADISTICAS
+            ================================== -->
+
+            <section class="page" id="stats">
+
+                <div class="page-header">
+                    <h1>Estadísticas y análisis</h1>
+                    <p>Distribución actual de los objetos detectados.</p>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-title">TOTAL DE OBJETOS</div>
+                        <div class="stat-number" id="total-objects">0</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-title">CATEGORÍAS DETECTADAS</div>
+                        <div class="stat-number" id="category-count">0</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-title">PERSONAS</div>
+                        <div class="stat-number" id="stats-person">0</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-title">AUTOMÓVILES</div>
+                        <div class="stat-number" id="stats-car">0</div>
+                    </div>
+
+                </div>
+
+                <div class="chart-grid">
+
+                    <div class="section-card">
+
+                        <div class="section-title">
+                            📊 Cantidad por categoría
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Personas</span>
+                                <span id="bar-person-value">0</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" id="bar-person"></div>
+                            </div>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Automóviles</span>
+                                <span id="bar-car-value">0</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" id="bar-car"></div>
+                            </div>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Celulares</span>
+                                <span id="bar-cell-value">0</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" id="bar-cell"></div>
+                            </div>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Otros</span>
+                                <span id="bar-other-value">0</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" id="bar-other"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="section-card">
+
+                        <div class="section-title">
+                            📋 Resumen de categorías
+                        </div>
+
+                        <div class="info-row">
+                            <span>Personas</span>
+                            <span class="info-value" id="summary-person">0</span>
+                        </div>
+
+                        <div class="info-row">
+                            <span>Automóviles</span>
+                            <span class="info-value" id="summary-car">0</span>
+                        </div>
+
+                        <div class="info-row">
+                            <span>Celulares</span>
+                            <span class="info-value" id="summary-cell">0</span>
+                        </div>
+
+                        <div class="info-row">
+                            <span>Otros objetos</span>
+                            <span class="info-value" id="summary-other">0</span>
+                        </div>
+
+                        <div class="info-row">
+                            <strong>Total</strong>
+                            <strong class="info-value" id="summary-total">0</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 HISTORIAL
+            ================================== -->
+
+            <section class="page" id="history">
+
+                <div class="page-header">
+                    <h1>Historial de detecciones</h1>
+                    <p>Registro de eventos identificados por el sistema.</p>
+                </div>
+
+                <div class="section-card">
+
+                    <div class="section-title">
+                        🕒 Registro de actividad
+                    </div>
+
+                    <div class="history-placeholder">
+
+                        <div class="big-icon">📂</div>
+
+                        <h3>Historial disponible próximamente</h3>
+
+                        <p>
+                            El sistema todavía no almacena las detecciones
+                            realizadas.
+                        </p>
+
+                        <p>
+                            En una próxima versión conectaremos esta sección
+                            con una base de datos SQLite para guardar fecha,
+                            hora, objeto y nivel de confianza.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 CONFIGURACION
+            ================================== -->
+
+            <section class="page" id="settings">
+
+                <div class="page-header">
+                    <h1>Configuración del sistema</h1>
+                    <p>Información técnica de la plataforma de detección.</p>
+                </div>
+
+                <div class="section-card">
+
+                    <div class="section-title">
+                        ⚙️ Información del sistema
+                    </div>
+
+                    <div class="info-row">
+                        <span>Aplicación</span>
+                        <span class="info-value">Vision AI</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Modelo de inteligencia artificial</span>
+                        <span class="info-value">YOLOv8n</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Framework web</span>
+                        <span class="info-value">Flask</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Procesamiento de imágenes</span>
+                        <span class="info-value">OpenCV</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Fuente de video</span>
+                        <span class="info-value">Cámara 0</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Umbral de confianza</span>
+                        <span class="info-value">40%</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Estadísticas</span>
+                        <span class="info-value">Actualización cada 1 segundo</span>
+                    </div>
+
+                </div>
+
+                <div class="section-card">
+
+                    <div class="section-title">
+                        💻 Información de la plataforma
+                    </div>
+
+                    <p style="color:#91a2ba;font-size:14px;line-height:1.8;">
+                        Vision AI es un sistema de visión computacional
+                        desarrollado con Python, Flask, OpenCV y YOLO.
+                        Su objetivo es identificar y clasificar objetos
+                        mediante procesamiento de imágenes en tiempo real.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- PIE DE PAGINA -->
+
+            <div class="footer">
+                Vision AI | Proyecto de Francisco - Ancud, Chile
+                <br><br>
+                Inteligencia Artificial · Visión Computacional · YOLO
+            </div>
+
+        </main>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
